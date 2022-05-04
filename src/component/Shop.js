@@ -1,6 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
 
 const Shop = (props) => {
+  const [cart,setCart] = useState(0);
+  const [disable,setDisable]=useState(false);
+  const [cartunselect, setCartunselect] = useState(false);
   return <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container px-4 px-lg-5">
@@ -25,10 +29,10 @@ data-bs-toggle="dropdown" aria-expanded="false">Shop</span>
                 </li>
             </ul>
             <form className="d-flex">
-                <button className="btn btn-outline-dark" type="submit">
+                <button className="btn btn-outline-dark" type="submit" onClick={()=>setCartunselect(!cartunselect)}>
                     <i className="bi-cart-fill me-1"></i>
-                    Cart
-                    <span className="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    <span>Cart </span>
+                    <span className="badge bg-dark text-white ms-1 rounded-pill"> {cart}</span>
                 </button>
             </form>
         </div>
@@ -93,8 +97,8 @@ data-bs-toggle="dropdown" aria-expanded="false">Shop</span>
           </div>
         </div>
         
-        <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-          <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+        <div className={`card-footer p-4 pt-0 border-top-0 bg-transparent ${disable ?"disabled":""} ${cartunselect ? "enabled" : ""}`} onClick={()=>setDisable(!disable)}>
+          <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#" onClick={()=>{setCart(cart + 1)}}>Add to cart</a></div>
         </div>
       </div>
     </div>

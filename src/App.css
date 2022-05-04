@@ -11290,3 +11290,11 @@ textarea.form-control-lg {
 .text-muted.text-decoration-line-through {
   margin-right: 5px;
 }
+.disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+.enabled {
+  opacity: 1;
+pointer-events: visible;
+}
